@@ -1,0 +1,34 @@
+npm install body-parser@1.19.0 dotenv@8.2.0 ejs@3.1.5 express@4.17.1
+npm install --save-dev @babel/core@7.12.10 @babel/node@7.12.10 @babel/preset-env@7.12.10 nodemon@2.0.7
+npm install --save-dev sequelize-cli@6.2.0
+npx sequelize-cli init
+npm install --save sequelize@6.6.2
+node_modules/.bin/sequelize init
+Set-ExecutionPolicy RemoteSigned(chay powershell)
+npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+(create the first model--and mgigration)
+npm install --save mysql2@2.2.5
+npx sequelize-cli db:migrate(chay migration)
+npx sequelize-cli seed:generate --name demo-user(tao du lieu gia)
+(up: them du lieu vao -- down: chay lai khi bi loi)
+npx sequelize-cli db:seed:all(chay seeds)
+
+(TCPView de bo cong 8080)
+
+npm install --save bcryptjs@2.4.3 (thư viện băm mật khẩu)
+
+** su dung nvm(su dung cmd admin)
+nvm install 11.15.0
+nvm use <version> (chon version de su dung)
+nvm list(kiem tra cac phien ban)
+(sequelize get data except flelds)
+npm install --save cors@2.8.5 (chan goi api tu ten mien khac)
+
+(update migration)
+npx sequelize-cli db:migrate --to migration-create-user.js
+
+(lodash thu vien su li mang)
+npm install --save lodash@4.17.21
+bulk create xử lí nhiều dữ liệu trong 1 lần
+npm install --save-exact nodemailer@6.6.3
+npm install --save-exact uuid@8.3.2
