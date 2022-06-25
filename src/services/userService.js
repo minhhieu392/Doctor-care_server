@@ -21,7 +21,7 @@ let handleUserLogin = (email, password) => {
             if(isExist) {
                 let user = await db.User.findOne({
                     //các trường được phép lấy
-                    attributes: ['email','roleId','password', 'firstName', 'lastName'],
+                    attributes: ['id','email','roleId','password', 'firstName', 'lastName'],
                     where: {email: email},
                     raw: true
                                            
@@ -56,19 +56,11 @@ let handleUserLogin = (email, password) => {
         }
     })
 }
-let compareUserPassword = () => {
-    return new Promise(async (resolve, reject) => {
-        try{
 
-        }catch
-        {
-
-        }
-    })
-}
 let checkUserEmail = (Useremail) => {
     return new Promise(async(resolve, reject) => {
         try{
+            console.log(Useremail)
             let user = await db.User.findOne({
                 where: {email: Useremail}
             })
@@ -111,6 +103,7 @@ let getAllUser = (userId) => {
 let CreateNewUser = (data) => {
     return new Promise(async(resolve, reject) => {
         try{
+            console.log('data',data.password)
             //check email is exist
             let checkemail = await checkUserEmail(data.email);
             if(checkemail === true){
@@ -121,16 +114,16 @@ let CreateNewUser = (data) => {
             }else{
                 let hashPasswordFromBcrypt = await hashUserPassword(data.password);
                 await db.User.create({
-                email: data.email,
-                password: hashPasswordFromBcrypt,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                address: data.address,
-                gender: data.gender,
-                roleId: data.roleId,
-                phonenumber: data.phonenumber,
-                positionId: data.positionId,
-                image: data.avatar,
+                    email: data.email,
+                    password: hashPasswordFromBcrypt,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    address: data.address,
+                    gender: data.gender,
+                    roleId: data.roleId,
+                    phonenumber: data.phonenumber,
+                    positionId: data.positionId,
+                    image: avatar
             })
             resolve({
                 errCode: 0,
